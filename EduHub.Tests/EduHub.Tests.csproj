@@ -15,6 +15,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\EduHub.Application\EduHub.Application.csproj" />
+    <ProjectReference Include="..\EduHub.Domain\EduHub.Domain.csproj" />
+    <ProjectReference Include="..\EduHub.Infrastructure\EduHub.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Using Include="Xunit" />
   </ItemGroup>
 
