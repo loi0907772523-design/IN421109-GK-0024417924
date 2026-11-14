@@ -1,0 +1,7 @@
+**/bin/
+**/obj/
+.vs/
+
+/EduHub.API (Web API)/
+/EduHub.Tests (xUnit)/
+*.csproj.user
