@@ -20,14 +20,16 @@ public class EventService
         Guid clubId,
         string title,
         DateTime date,
-        int capacity)
+        int capacity,
+        INotificationService? notification = null)
     {
         var newEvent = Event.Create(
             clubId, title, date, capacity);
 
         await _repository.AddAsync(newEvent);
 
-        _notification.Send($"Sự kiện mới: {title}");
+        (notification ?? _notification)
+            .Send($"Sự kiện mới: {title}");
 
         return newEvent;
     }
