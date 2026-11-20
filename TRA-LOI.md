@@ -74,3 +74,11 @@ Nếu Domain phụ thuộc Infrastructure thì khi thay đổi
 database có thể phải sửa cả Domain, vi phạm
 Dependency Rule của Clean Architecture.
 ## Câu 5d
+
+Khi sử dụng AddScoped, mỗi HTTP request sẽ có một instance Repository riêng. Nếu dữ liệu được lưu trong List<Event> không static thì khi POST tạo sự kiện thành công, request GET tiếp theo sử dụng Repository mới nên danh sách bị rỗng.
+
+Để khắc phục, em đăng ký IEventRepository bằng AddSingleton để các request sử dụng chung một instance InMemoryEventRepository, giúp giữ dữ liệu trong bộ nhớ khi ứng dụng còn chạy.
+
+```csharp
+builder.Services.AddSingleton<IEventRepository, InMemoryEventRepository>();
+```
