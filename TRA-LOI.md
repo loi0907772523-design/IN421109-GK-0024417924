@@ -2,6 +2,38 @@
 
 ## Câu 1a
 
+1. Tính đóng gói (Encapsulation): Giúp bảo vệ dữ liệu của đối tượng, không cho phép thay đổi trực tiếp từ bên ngoài mà phải thông qua các phương thức được quy định.
+
+Tệp: EduHub.Domain/Entities/Registration.cs
+
+Lớp: Registration
+
+Minh họa: Các thuộc tính sử dụng private set để hạn chế việc thay đổi dữ liệu từ bên ngoài. Trạng thái đăng ký chỉ được thay đổi thông qua Confirm() và Cancel(), có kiểm tra điều kiện trước khi cập nhật.
+
+2. Tính kế thừa (Inheritance): Cho phép một lớp kế thừa các thuộc tính và phương thức từ lớp khác, giúp tái sử dụng mã nguồn.
+
+Tệp: EduHub.API/Controllers/EventsController.cs
+
+Lớp: EventsController
+
+Minh họa: Lớp EventsController kế thừa ControllerBase để sử dụng các phương thức có sẵn như Ok(), NotFound(), BadRequest() và NoContent() khi xử lý HTTP request.
+
+3. Tính đa hình (Polymorphism): Cho phép các đối tượng thuộc những lớp khác nhau được sử dụng thông qua cùng một interface, nhưng có cách thực hiện riêng.
+
+Tệp: EduHub.Infrastructure/Factories/NotificationFactory.cs
+
+Lớp: NotificationFactory
+
+Minh họa: Phương thức Create() trả về kiểu INotificationService, nhưng tùy theo channel mà trả về EmailNotificationService hoặc SmsNotificationService. Nhờ đó, chương trình có thể sử dụng chung interface để xử lý các kênh thông báo khác nhau.
+
+4. Tính trừu tượng (Abstraction): Giúp che giấu chi tiết xử lý bên trong và chỉ cung cấp những chức năng cần thiết cho các lớp khác sử dụng.
+
+Tệp: EduHub.Domain/Interfaces/IEventRepository.cs
+
+Interface: IEventRepository
+
+Minh họa: Interface IEventRepository khai báo các phương thức AddAsync(), GetByClubIdAsync(), GetByIdAsync() và DeleteAsync() mà không chứa phần xử lý cụ thể. Việc lưu trữ và truy xuất dữ liệu được thực hiện trong lớp InMemoryEventRepository.
+
 ## Câu 1b
 1. Id và Email có public set nên bên ngoài có thể
 tự ý sửa dữ liệu, làm mất tính đóng gói.
