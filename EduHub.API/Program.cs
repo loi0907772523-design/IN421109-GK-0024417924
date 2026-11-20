@@ -8,7 +8,7 @@ using EduHub.Infrastructure.Factories;
 var builder = WebApplication.CreateBuilder(args);
 
 // Đăng ký Repository
-builder.Services.AddScoped<IEventRepository, InMemoryEventRepository>();
+builder.Services.AddSingleton<IEventRepository, InMemoryEventRepository>();
 
 // Đăng ký dịch vụ thông báo
 builder.Services.AddScoped<EmailNotificationService>();
